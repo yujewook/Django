@@ -1,0 +1,23 @@
+<!-- 템플릿 상속 -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		{% block title %}
+			<h2>	방명록리스트 	</h2>
+		{% endblock %}
+		{% block header %}
+			<ul>
+				<li><a href="http://localhost:8000/guestbook/list">방명록</a></li>
+				<li><a href="http://localhost:8000/survey/main">설문조사</a></li>
+			</ul>
+		{% endblock%}
+		<div id="contents">
+			{% block contents %}
+			{% endblock %}
+		</div>
+	</body>
+</html>

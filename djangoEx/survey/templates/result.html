@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h2> {{survey_idx}}번 설문결과</h2><!-- 서베이가 튜플로 순서대로 받아야한다. -->
+		<table border = "1">
+			<tr>
+				<th>항목</th>
+				<th>응답수</th>
+				<th>응답률</th>
+			</tr><!-- 서베이가 튜플로 순서대로 받아야한다. -->
+			{% for survey, answer in surveylist %} 
+			<tr align="center">
+				<td>{{answer}}</td>
+				<td>{{survey.sum_num }}</td> <!-- 각각의 응답갯수 -->
+				<td>{{survey.rate}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+{% extends "base.html"%}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		{%block title%}<h2> 방명록 </h2>{% endblock %}
+		{%block contents%}
+		<br> {{gbcount}}개의 글이 있습니다.
+		
+		<input type="button" value="글쓰기" onclick="location='write'"><!-- url에 write로 넘어라가 글쓰기 -->
+		<br>
+		{%for gb in gblist %}
+			<form method="post" action="passwdck"><!-- submit이 action되는 곳 비밀번호 넘겨야 하기 때문에 -->
+				{% csrf_token %}
+				<input type="hidden" name = "idx" value="{{gb.idx}}">
+				<table border="1" style="margin:5px">
+					<tr>
+						<th> 이름 </th>
+						<td align="center"> {{gb.name}}</td>
+						<th> 작성일 </th>
+						<td align="center"> {{gb.postdate|date:"Y-m-d"}}</td>
+					</tr>
+					<tr>
+						<th> 이메일 </th>
+						<td colspan="3">&nbsp;{{gb.email}} </td>
+					</tr>
+					<tr>
+						<th> 내용 </th>
+						<td colspan="3">&nbsp;<pre>{{gb.content}}</pre></td> 
+					</tr>
+					<tr>
+						<th> 비밀번호 </th>
+						<td> <input type = "password" name="passwd"></td>
+						<th colspan="3"> <input type = "submit" value= "수정/삭제"></th><!-- passwdck로 넘어간다 -->
+						
+					</tr>
+				</table>
+			
+			</form> 
+		{% endfor %}
+		{%endblock%} 	
+	</body>
+</html>

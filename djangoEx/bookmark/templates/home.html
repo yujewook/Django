@@ -1,0 +1,21 @@
+{% load static %} <!-- static에서 이미지 사용하기위해 -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	
+	<body>
+			<h2>북마크</h2>
+			<!-- el 태그 같은것  -->
+			{{urlcount}}개의 북마크가 있습니다.<br>
+			<!-- 파이썬 사용하기 <% %>같은것 -->
+			{% for row in urllist %}
+			
+				<li><a href= "{{row.url}}">{{row.title}}</a></li>
+			{% endfor %}
+			<br>
+			<img src="{% static 'images/2046692726_S18Yq0PT_2066c1c725ddb454852bf5f0654bc7b7f831d8de.gif' %}">
+	</body>
+</html>

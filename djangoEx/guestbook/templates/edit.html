@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h2>수정/삭제</h2>
+		<form method ="post" action = "update">
+							<!-- view에서 dto로 넘김 -->
+			<input type="hidden" name ="idx" value="{{dto.idx}}">
+			<table border="1">
+				<tr>
+					<th> 이름 </th>
+					<td> {{dto.name}}</td>
+				</tr>
+				<tr>
+					<th> 이메일 </th>
+					<td>
+						{% if dto.email == "" %}
+							<input type= "text" name="email">
+						{% endif %}
+						{% if dto.email != "" %}
+							<input type="text" name ="email" value ="{{dto.email}}">
+						{% endif %}
+					</td>
+				</tr>
+				<tr>
+					<th> 비밀번호 </th>
+					<td>
+						<input type="passwd" name = "passwd" value="{{dto.passwd}}"> 
+					</td>
+				</tr>
+				<tr>
+					<th> 내용 </th>
+					<td>
+						<textarea name = "content" rows="5" cols="40">{{dto.content}}</textarea>
+				
+				</tr>
+				<tr>
+					<th colspan="2">
+						<input type="submit" value="수정">
+						<input type="button" value="삭제"
+							onclick="location='delete?idx={{dto.idx}}'"> <!-- get방식으로 넘겨준다 -->
+						<input type="button" value="목록"
+							onclick="location='list'">
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+{% extends "base.html"%}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	{% block title %}<h2>글쓰기</h2>{% endblock %}
+	{%block contents%}
+	{% csrf_token %}
+	<form method="post" action = "writepro">
+		<table border = "1">
+			<tr>
+				<th> 이름 </th>
+				<td> <input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<th> 이메일 </th>
+				<td> <input type="text" name="email"></td>
+			</tr>
+			<tr>
+				<th> 비밀번호 </th>
+				<td> <input type="text" name="passwd"></td>
+			</tr>
+			<tr>
+				<th> 내용 </th>
+				<td> <textarea name="content" rows="5" cols="40"></textarea>
+			</tr>
+			<tr>
+				<th colspan="2">
+					<input type="submit" value="작성">
+					<input type="reset" value="취소">
+				</th>
+			</tr>
+		</table>
+	</form>
+	{%endblock%} 	
+</body>
+</html>

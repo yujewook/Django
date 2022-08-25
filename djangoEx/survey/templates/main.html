@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h2> 설문조사 </h2>
+		<!-- 데이터를 받아야 하기 때문에 form 테그  post방식이면 post로 한다.-->
+		<!--<form method="post" action="http://localhost:8000/survey/save"/>-->
+			<!-- 
+			action = save를 파이썬 태그로 url save 로 바꿔 줄 수 있다. 이것은 admin.py 
+			url path 맵핑 된 것으로 실행하는 거다.
+			 -->
+		<form method="post" action="save">
+		<!-- 여기다 공격대비 보안처리 -->
+			{% csrf_token %}
+			
+			<input type="hidden" name="survey_idx" value="{{survey.survey_idx}}">	
+				<table border="1">
+				
+					<tr>
+						<th colspan="2">
+							{{survey.question}}
+						</th>
+					</tr>
+					<tr>
+						<th> 선택</th>
+						<td>
+							<input type="radio" name="num" value="1"> {{survey.ans1}}<br>
+							<input type="radio" name="num" value="2"> {{survey.ans2}}<br>
+							<input type="radio" name="num" value="3"> {{survey.ans3}}<br>
+							<input type="radio" name="num" value="4"> {{survey.ans4}}<br>
+						</td>
+					</tr>
+					<tr>
+						<th colspan="2">
+							<input type="submit" value="저장">
+							<input type="button" value="확인"
+							 onclick="javascript:window.location.href='result?survey_idx={{survey.survey_idx}}'"> <!--get방식-->
+						</th>
+					</tr>
+				
+				</table>
+		</form>
+	</body>
+</html>
