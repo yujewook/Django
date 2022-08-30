@@ -1,0 +1,55 @@
+{% extends "base.html"%}
+{%block title%} <h2> 메인 페이지 </h2> {%endblock%}
+
+{%block contents %}
+
+
+{% if memid %}<!-- view login memid가 있기 때문에 된화면 안된화면 나누기 하지만 여기는 쿠키 -->
+<table>
+	<tr>
+		<th> <span>{{memid}}</span>님 안녕하세요 </th>
+	</tr>
+	<tr>
+		<td align="center">
+			<input class="inputbutton" type="button" value="수정"
+				onclick="location='modify'">
+			<input class="inputbutton" type="button" value="탈퇴" 
+				onclick="location='delete'">
+			<input class="inputbutton" type="button" value="로그아웃"
+				onclick="location='logout'">
+		</td>
+	</tr>
+</table>
+{%else%}
+{% csrf_token %}
+<!-- 로그인 할때 get방식 여기 가입할때 post view클래스안에다가 -->
+<form method="post" action="login" name="mainform" onsubmit= "return maincheck()">
+<!-- onsubmit은 자바스크립트를 사용한는거 maincheck() -->
+	<table>
+		<tr>
+			<th colspan="2">비회원이시면 회원가입을 해주세요 안녕</th>
+		</tr>
+		<tr>
+			<th> 아이디</th>
+			<td> <input class= "input" type="text" name ="id" autofocus> </td>
+		</tr>
+		<tr>
+			<th> 비밀번호</th>
+			<td> <input class = "input" type="password" name="passwd"></td>
+		</tr>
+		<tr>
+			<th colspan="2">
+				<input class= "inputbutton" type="submit" value="로그인">
+				<input class= "inputbutton" type="reset" value="취소">
+				<input class= "inputbutton" type="button" value="회원가입"
+						onclick=" location= 'write' "><!-- 자바스클립처럼 url에 write를 써주고 url write로 넘김  -->
+			</th>	
+		</tr>
+		
+		
+	</table>
+
+</form>
+{%endif%}
+
+{%endblock%}

@@ -1,0 +1,23 @@
+{% extends "base_board.html"%}
+{% block title %} <h2> 글 목 록 (전체글 : {{count}}) </h2> {% endblock %}
+{% block contents %}
+<table>
+	<tr>
+		<td style="text-align:right" colspan="6">
+			<!-- url.py name  -->
+			<a href="{% url 'board:writearticle' %}">글쓰기</a>&nbsp;&nbsp;&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<th style="width:8%">글번호</th>
+		<th style="width:40%">제목</th>
+		<th style="width:15%">작성자</th>
+		<th style="width:8%">조회수</th>
+		<th style="width:15%">작성일</th>
+		<th style="width:15%">ip</th>
+	</tr>
+	{% if count == 0 %}
+	{% else %}
+	{% endif %}
+</table>	
+{% endblock %}
