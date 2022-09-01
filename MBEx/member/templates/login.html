@@ -1,0 +1,32 @@
+{% extends "base.html"%}
+{% block title %}<h2> 로그인</h2>{%endblock%}
+{% block contents%}
+{%csrf_token%}
+<form name="loginform" method="post" action="login">
+	<table>
+		<tr>
+			<th colspan="2"> 
+				{% if message %}
+					{{ message }}
+				{% else %}
+					로그인 해주세요
+				{% endif %}
+			</th>
+		</tr>
+		<tr>
+			<th> 아이디 </th>
+			<td> <input class ="input" type="text" name ="id"> </td>
+		</tr>
+		<tr>
+			<th> 비밀번호 </th>
+			<td> <input class="input" type ="password" name="passwd"></td>
+		</tr>
+		<tr>
+			<th colspan="2">
+				<input class="inputbutton" type="submit" value="로그인">
+				<input class="inputbutton" type="reset" value="취소">
+			</th>	
+		</tr>
+	</table>
+</form>
+{%endblock%}

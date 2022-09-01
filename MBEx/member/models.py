@@ -8,5 +8,7 @@ class Member (models.Model):
     name = models.CharField(max_length=50, verbose_name="이름", null=False)
     email = models.CharField(max_length=100, verbose_name="이메일", null=True)
     tel = models.CharField(max_length=30, verbose_name="전화번호", null=True)
+    #depart select 할수 있게
     depart = models.CharField(choices=DEPART_CHOICE, max_length=50, verbose_name="부서", null=False)
     logtime = models.DateTimeField(auto_now_add=True, verbose_name="가입일", null=False, blank=True)
+    

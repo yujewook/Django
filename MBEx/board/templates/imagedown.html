@@ -1,0 +1,12 @@
+{% extends "base_board.html" %}
+{%block title%}  <h2> 이미지다운 </h2> {% endblock%}
+
+{% block contents %}
+	{%for dto in dtos %}
+		{{ dto.title }}<br> <!-- 이미지 찍는 방법 -->
+		{{ dto.photo.url }}<br> 
+		{{ dto.photo.path }} <br>
+		
+		<img src="{{dto.photo.url}}" border="0" width="200" height="100">
+	{% endfor %}	
+{% endblock %}

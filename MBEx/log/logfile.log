@@ -1,0 +1,27 @@
+[2022-08-29 20:33:38] INFO [member.views:78]id : qwe
+[2022-08-29 20:33:41] INFO [member.views:78]id : qqq
+[2022-08-29 20:33:44] INFO [member.views:78]id : aaa
+[2022-08-29 20:33:46] INFO [member.views:78]id : bb
+[2022-08-29 20:33:49] INFO [member.views:78]id : bbb
+[2022-08-29 20:33:51] INFO [member.views:78]id : ccc
+[2022-08-29 20:34:05] INFO [member.views:78]id : ccc
+[2022-08-29 20:34:11] INFO [member.views:124]write :<built-in function id>
+[2022-08-29 20:36:14] INFO [member.views:78] id : ccc
+[2022-08-29 20:36:14] INFO [member.views:78] id : ccc
+[2022-08-29 20:36:15] INFO [member.views:78] id : ddd
+[2022-08-29 20:36:20] INFO [member.views:124] write :<built-in function id>
+[2022-08-29 21:19:31] INFO [member.views:78] id : ddd
+[2022-08-29 21:19:33] INFO [member.views:78] id : ccc
+[2022-08-29 21:19:35] INFO [member.views:78] id : zzz
+[2022-08-29 21:19:46] INFO [member.views:124] write :zzz
+[2022-08-30 10:34:45] INFO [member.views:141] id : bbb
+[2022-08-30 11:22:35] INFO [member.views:149] id : ccc
+[2022-08-30 11:22:37] INFO [member.views:149] id : ccc
+[2022-08-30 11:22:49] INFO [member.views:195] write :ccc
+[2022-08-30 11:38:18] INFO [member.views:172] id : ddd
+[2022-08-30 11:38:20] INFO [member.views:172] id : ddd
+[2022-08-30 11:38:38] INFO [member.views:218] write :ddd
+[2022-09-01 10:36:28] INFO [board.views:44] <QuerySet [<Board: Board object (51)>]>
+[2022-09-01 10:37:27] INFO [board.views:44] <QuerySet [<Board: Board object (53)>]>
+[2022-09-01 10:37:44] INFO [board.views:44] <QuerySet []>
+[2022-09-01 10:40:16] INFO [board.views:44] <QuerySet [<Board: Board object (56)>]>

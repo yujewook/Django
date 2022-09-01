@@ -12,57 +12,73 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 import os
+MEDIA_URL="/media/"
+MEDIA_ROOT=os.path.join(BASE_DIR ,"media")
+
+
 LOGGING = {
-    "version": 1,
-    "disable_existing_loggers" : False,
-    "formatters" :{
-        "format1" :{
-            "format" : "[%(asctime)s]%(levelname)s [%(name)s:%(lineno)s]%(message)s",
+    "version" : 1,
+    "disable_existing_loggers" : False, # 보이지 않겠냐
+    "formatters" : { # 저장된 로그파일의 형식, 딕셔너리로 들어감
+        "format1" : {
+            "format" : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s", # 시간을 먼저 찍어라, 레벨이름, 이름, 줄번호, 메시지
             "datefmt" : "%Y-%m-%d %H:%M:%S",
             },
-        "format2" :{
-            "format" : "%(levelname)s %s(message)s",
+        "format2" : {
+            "format" : "%(levelname)s %(message)s",
             },
         },
-    "handlers" :{
-        "file" :{
+    "handlers" : {
+        # 파일로 출력하는 형식
+        "file" : {
             "level" : "INFO",
             "class" : "logging.handlers.RotatingFileHandler",
-            "filename" : os.path.join(BASE_DIR, "log/logfile.log"),
+            "filename" : os.path.join( BASE_DIR, "log/logfile.log" ),
             "encoding" : "utf-8",
-            "maxBytes" : 1024*1024*5,
+            "maxBytes" : 1024 * 1024 * 5, # 5메가
             "backupCount" : 5,
-            "formatter" : "format1",
+            "formatter" : "format1", # 출력 형식을 위에만든 format1로 지정
             },
-        "console" :{
+        "console" : {
             "level" : "DEBUG",
             "class" : "logging.StreamHandler",
-            "formatter":"format2",
+            "formatter" : "format2",
             },
         },
-    "loggers" :{
-        "django" :{
-            "handlers" :["console"],
-            "propagate" :True ,
+    "loggers" : {  # 누가 출력할 것인지
+        # 로거의 종류
+        "django" : {
+            "handlers" : ["console"], # 에러까지 있으면 잘라쓰기 힘듬, 콘솔에만 출력
+            "propagate" : True,
             "level" : "WARNING",
             },
-        "django.request" :{
+        "django.request" : {
             "handlers" : ["console"],
-            "propagate": True,
+            "propagate" : True,
             "level" : "WARNING",
             },
-        "member" :{
-            "handlers":["file"],
-            "propagate":True,
-            "level":"INFO",
-            }    
-        }
+        "member" : {
+            "handlers" : ["file"],
+            "propagate" : True,
+            "level" : "INFO",
+            },
+        "board" : {
+            "handlers" : ["file"],
+            "propagate" : True,
+            "level" : "INFO"
+            }        
+        }    
+    
+    
+    
     }
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -72,12 +88,13 @@ SECRET_KEY = 'django-insecure-^_f9%qmqy75#4v^7odug8(i7*s2xar25j24^c*41j%-l!^gxu!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost","127.0.0.1","192.168.0.118"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'mathfilters',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -86,6 +103,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #어플 마다 설정이 다를때 하는거 Config
     "member.apps.MemberConfig", 
+    "board.apps.BoardConfig", 
 ]
 
 MIDDLEWARE = [
