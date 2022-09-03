@@ -1,0 +1,26 @@
+{% extends "base_board.html" %}
+{% block title %} <h2> 글보기 </h2> {% endblock %}
+{% block contents %}
+<table boder="1">
+	<tr>
+		<th> 글번호</th>
+			<td style="text-align:center"> {{number}} </td>
+	</tr>
+	<tr>
+		<th> 작성자 </th>
+		<td style="text-align:center"> {{dto.adminid}}</td>
+	</tr>
+	<tr>
+		<th> 제목 </th>
+		<td colspan="3"> {{dto.noticetitle}}</td> 
+	</tr>
+	<tr>
+		<th>내용</th>
+		<td colspan="3"> <pre>{{dto.content}}</pre></td>
+	</tr>
+
+	
+</table>
+
+
+{% endblock %}
