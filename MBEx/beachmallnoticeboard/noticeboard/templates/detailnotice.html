@@ -1,0 +1,34 @@
+{% extends "base_board.html" %}
+{% block title %} <h2> 글보기 </h2> {% endblock %}
+{% block content %}
+<table>
+	<tr>
+		<th> 글번호</th>
+			<td style="text-align:center"> {{number}} </td>
+	</tr>
+	<tr>
+		<th> 작성자 </th>
+		<td style="text-align:center"> {{dto.admin}}</td>
+	</tr>
+	<tr>
+		<th> 작성일 </th>
+		<td style="text-align:center"> {{dto.noticedate|date:"Y-m-d H:i"}}</td>
+	</tr>
+	<tr>
+		<th> 제목 </th>
+		<td colspan="3"> {{dto.noticetitle}}</td> 
+	</tr>
+	<tr>
+		<th>내용</th>
+		<td colspan="3"> <pre>{{dto.content}}</pre></td>
+	</tr>
+	<tr>
+		<th colspan="4">
+			<input class="inputbutton" type="button" value="목록"
+				onclick="location='noticelist?pagenum={{pagenum}}'">
+	</tr>
+	
+</table>
+
+
+{% endblock %}

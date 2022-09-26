@@ -1,0 +1,24 @@
+{% extends "base_board.html" %} 
+{% load mathfilters %}
+{% load static %}
+{% block title %}
+<h2>검색 결과</h2>
+{% endblock %} 
+{% block content %}
+<table style="border: 1">
+	<tr>
+		<th style="width: 40%">제목</th>
+		<th style="width: 15%">작성자</th>
+	</tr>
+	{% for dto in dtos %}
+	<tr>
+		<td>
+			<!-- 목록에서 글번호에 맞게 디테일페이지로 보내는 방법 --> <a
+			href="../notice/noticedetail?noticenum={{dto.noticenum}}&pagenum={{pagenum}}&number={{number|sub:forloop.counter0}}">
+				{{dto.noticetitle}} </a>
+		</td>
+		<td style="text-align: center">{{dto.admin}}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}
