@@ -1,0 +1,412 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	<title>비치몰</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="static/css/static index.css" />
+    <link rel="stylesheet" href="static/css/style_board.css"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'css/style_board.css' %}">
+	<link type="text/css" rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="{% static 'js/jquery-3.6.0.js'%}"></script>
+    <script src="{% static 'js/index.js'%}"></script>
+    <style>
+      div#root {
+        width: 900px;
+        margin: 0 auto;
+      }
+      header#header {
+      }
+      nav#nav {
+      }
+      section#container {
+      }
+      section#content {
+        float: right;
+        width: 700px;
+      }
+      aside#aside {
+        float: left;
+        width: 180px;
+      }
+      section#container::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      footer#footer {
+        background: #eee;
+        padding: 20px;
+      }
+
+      /* ---------- */
+
+      header#header div#header_box {
+        text-align: center;
+        padding: 30px 0;
+      }
+      header#header div#header_box h1 {
+        font-size: 50px;
+      }
+      header#header div#header_box h1 a {
+        color: #000;
+      }
+
+      nav#nav div#nav_box {
+        font-size: 14px;
+        padding: 10px;
+        text-align: right;
+      }
+      nav#nav div#nav_box li {
+        display: inline-block;
+        margin: 0 10px;
+      }
+      nav#nav div#nav_box li a {
+        color: #333;
+      }
+
+      section#container {
+      }
+
+      aside#aside h3 {
+        font-size: 22px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      aside#aside li {
+        font-size: 16px;
+        text-align: center;
+      }
+      aside#aside li a {
+        color: #000;
+        display: block;
+        padding: 10px 0;
+      }
+      aside#aside li a:hover {
+        text-decoration: none;
+        background: #eee;
+      }
+
+      aside#aside li {
+        position: relative;
+      }
+      aside#aside li:hover {
+        background: #eee;
+      }
+      aside#aside li > ul.low {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 180px;
+      }
+      aside#aside li:hover > ul.low {
+        display: block;
+      }
+      aside#aside li:hover > ul.low li a {
+        background: #eee;
+        border: 1px solid #eee;
+      }
+      aside#aside li:hover > ul.low li a:hover {
+        background: #fff;
+      }
+      aside#aside li > ul.low li {
+        width: 180px;
+      }
+
+      footer#footer {
+        margin-top: 100px;
+        border-radius: 50px 50px 0 0;
+      }
+      footer#footer div#footer_box {
+        padding: 0 20px;
+      }
+    </style>
+	</head>
+	
+	<body>
+	<div>
+      <header class="header" style="z-index: 10;">
+        <div style="text-align: center">
+          <div class="innercontent">
+            <div class="loginArea">
+              <ul style="text-align: right">
+                <li><a>로그인</a></li>
+                <li><a>회원가입</a></li>
+                <li><a>주문배송</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="main innercontent">
+            <h1 class="logoarea">
+              <a href="in"
+                ><img
+                  class="beachlg"
+                  src="../img/BeachLogo2.gif"
+                  style="width: 220px; height: 60px"
+              /></a>
+            </h1>
+            <div class="innersearSearch">
+              <div class="search_color">
+                <label class="blind" for=""></label>
+                <input
+                  class="search_input"
+                  title="검색어 입력"
+                  type="search"
+                  placeholder="비치몰라?🧡"
+                  aria-label="비치몰라?🧡"
+                />
+                <button class="search_button" value="">
+                  <img class="search_img" src="../img/icon_heart.png" />
+                </button>
+              </div>
+            </div>
+            <div class="mydataarea">
+              <ul class="beach_mydata" style="display: flex">
+                <li class="mydata"><a class="aa img1" href="">나의 찜</a></li>
+                <li class="mydata"><a class="aa img2" href="mylist.html">마이비치</a></li>
+                <li class="mydata"><a class="aa img3" href="">장바구니</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="cate" style="z-index: 2">
+              <div>
+                <div>
+                  <span class="catemom">카테고리1</span>
+                  <ul class="catearea">
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <span class="catemom">카테고리2</span>
+                  <ul class="catearea">
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <span class="catemom">카테고리3</span>
+                  <ul class="catearea">
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                    <li class="a">
+                      <a class="aa" href="">하위메뉴</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <nav>
+            <div class="container">
+                <ul class="category_ul">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">비치몰 소개</a></li>
+                    <li> <a href="#">카테고리<i class='fa fa-angle-down'></i></a>                     
+                        <ul>
+                            <li><a href="#">Category One </a>
+                              <ul>
+                                <li><a href="#">one의 하위<i class='fa-angle-down'></i></a></li>
+                              </ul>
+                            </li>
+
+                            <li><a href="#"> 하위 </a>
+                              <ul>
+                                <li><a> 더하위<i class='fa-angle-down'></i></a></li>
+                              </ul>
+                            </li>
+                        </ul>
+                    </li>
+                        
+                    <li class='sub-menu'> <a href="#">공지/QnA/FAQ<i class='fa fa-angle-down'></i></a>
+                        <ul>
+                            <li><a href="#">Service One</a></li>
+                            <li><a href="#">Service Two</a></li>
+                            <li><a href="#">Service Three</a></li>
+                            <li><a href="#">Service Four</a></li>
+                            <li><a href="#">Service Five</a></li>
+                            <li><a href="#">Service Six</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+          <!--검색어 순위-->
+          <div
+            class="block"
+            style="
+              position: fixed;
+              width: 175px;
+              display: inline-block;
+              right: 0px; /* 창에서 오른쪽 길이 */
+              top: 20%; /* 창에서 위에서 부터의 높이 */
+              background-color: transparent;
+              margin: 0;
+            "
+          >
+            <ul id="ticker">
+              <li>
+                <a href="#"><span>1</span> 비치몰</a>
+              </li>
+              <li>
+                <a href="#"><span>2</span> 여름추천상품</a>
+              </li>
+              <li>
+                <a href="#"><span>3</span> 비키니</a>
+              </li>
+              <li>
+                <a href="#"><span>4</span> 삼겹살</a>
+              </li>
+              <li>
+                <a href="#"><span>5</span> 등심</a>
+              </li>
+              <li>
+                <a href="#"><span>6</span> 유이</a>
+              </li>
+              <li>
+                <a href="#"><span>7</span> 손나바카나</a>
+              </li>
+              <li>
+                <a href="#"><span>8</span> 손연재</a>
+              </li>
+              <li>
+                <a href="#"><span>9</span> 손짜이찌엔</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <input class="goupbtn" type="button"  onclick="clickme()"></div>
+      </header>
+      <main style="z-index: 2; text-align: center">
+        <div>
+          <div>
+            <h2>자주 찾는 카테고리</h2>
+          </div>
+        </div>
+        <div class="prod_area">
+          <div class="prod2_area">
+            <ul style="list-style: none; height: 114px">
+              <li class="li_prod">
+                <a class="li_a" href="">
+                  <span class="prod_img"><img src="../img/meat.png" /></span>
+                  <div class="prod_text">정육/계란</div>
+                </a>
+              </li>
+              <li class="li_prod">
+                <a class="li_a" href="">
+                  <span class="prod_img"><img src="../img/meat.png" /></span>
+                  <div class="prod_text">정육/계란</div>
+                </a>
+              </li>
+              <li class="li_prod">
+                <a class="li_a" href="">
+                  <span class="prod_img"><img src="../img/meat.png" /></span>
+                  <div class="prod_text">정육/계란</div>
+                </a>
+              </li>
+              <li class="li_prod">
+                <a class="li_a" href="">
+                  <span class="prod_img"><img src="../img/meat.png" /></span>
+                  <div class="prod_text">정육/계란</div>
+                </a>
+              </li>
+              <li class="li_prod">
+                <a class="li_a" href="">
+                  <span class="prod_img"><img src="../img/meat.png" /></span>
+                  <div class="prod_text">정육/계란</div>
+                </a>
+              </li>
+              <li class="li_prod">
+                <a class="li_a" href="">
+                  <span class="prod_img"><img src="../img/meat.png" /></span>
+                  <div class="prod_text">정육/계란</div>
+                </a>
+              </li>
+              <li class="li_prod">
+                <a class="li_a" href="">
+                  <span class="prod_img"><img src="../img/meat.png" /></span>
+                  <div class="prod_text">정육/계란</div>
+                </a>
+              </li>
+              <li class="li_prod">
+                <a class="li_a" href="">
+                  <span class="prod_img"><img src="../img/meat.png" /></span>
+                  <div class="prod_text">정육/계란</div>
+                </a>
+              </li>
+              <li class="li_prod">
+                <a class="li_a" href="">
+                  <span class="prod_img"><img src="../img/meat.png" /></span>
+                  <div class="prod_text">정육/계란</div>
+                </a>
+              </li>
+              <li class="li_prod">
+                <a class="li_a" href="">
+                  <span class="prod_img"><img src="../img/meat.png" /></span>
+                  <div class="prod_text">정육/계란</div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </main>
+    </div>
+		{% block title %} <h2> 게시판 </h2> {% endblock %}
+		<!--  {% block header %} 상단메뉴 {% endblock %} -->
+		<br><br>
+		{% block contents %}
+		{% endblock %}
+		<br>
+		<!-- {% block footer %} 하단메뉴 {% endblock %} -->
+	
+	</body>
+</html>

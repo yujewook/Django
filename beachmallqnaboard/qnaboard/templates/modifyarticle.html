@@ -1,0 +1,31 @@
+{% extends "base_board.html" %}
+{% block title %} <h2> 글 삭 제 </h2> {% endblock %}
+{% block contents %}
+{% csrf_token %}
+<form name="modifyform" method="post" action="modify">
+	<input type="hidden" name="qnanum" value="{{qnanum}}">
+	<input type="hidden" name="pagenum" value="{{pagenum}}">
+	<table>
+		<tr>
+			<th colspan="2">
+				{% if message %}
+					{{message}}
+				{% else %}
+					비밀번호를 다시 확인하세요
+				{% endif %}
+			</th>
+		</tr>
+		<tr>
+			<th> 비밀번호 </th>
+			<td> <input class="input" type="password" name="passwd">
+		</tr>
+		<tr>
+			<th colspan="2">
+				<input class="inputbutton" type="submit" value="수정">
+				<input class="inputbutton" type="button" value="수정취소"
+					onclick="location='list?pagenum={{pagenum}}'">		
+		</tr>
+	</table>
+
+</form>
+{% endblock %}

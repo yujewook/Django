@@ -1,0 +1,102 @@
+{% extends "base_board.html" %}
+{% block title %} <h2> QnA ( 전체글 : {{count}} )</h2> {% endblock %}
+{% block contents %}
+{% load mathfilters %}
+{% load static %}
+
+<table style="width:50%">
+	<tr>
+		<td style="text-align:right" colspan="6">
+			<a href="{% url 'qnaboard:write'%}">QnA 쓰기</a>&nbsp;&nbsp;&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<th style="width:8%"> 글번호 </th>
+		<th style="width:40%"> 제목 </th>
+		<th style="width:15%"> 작성자 </th>
+		<th style="width:8%"> 조회수 </th>
+		<th style="width:15%"> 작성일 </th>
+		<th style="width:15%"> IP </th>
+	</tr>
+	{% if count == 0 %}
+	<tr>
+		<td colspan="6" style="text-align:center">
+			게시판에 글이 없습니다. 글쓰기 눌러주세요
+		</td>
+	</tr>
+	{% else %}
+		{% for dto in dtos %}
+			<tr>
+				<td style="text-align:center">
+					{{number|sub:forloop.counter0}}  <!-- 리스트가 출력될 때 글번호가 출력됨 -->
+				</td>
+				<td>
+					{% if dto.qnascore == -1 %}
+						삭제된 글입니다
+					{% else %} <!-- 삭제된 글이 아닐 때 -->
+						{% if dto.relevel > 1 %} 
+							<img src="{% static 'images/level.gif'%}" border="0" height="20"
+								width="{{dto.relevel|mul:7}}">
+						{% endif %}
+						{% if dto.relevel > 0 %} <!-- 0보다 크면 답글 -->
+							<img src="{% static 'images/re.gif'%}" border="0" width="15">
+						{% endif %}
+						<a href="detail?qnanum={{dto.qnanum}}&pagenum={{pagenum}}&number={{number|sub:forloop.counter0}}">
+							{{dto.qnatitle}}
+						</a>
+					{% endif %}
+				</td>
+				<td style="text-align:center">
+					{{dto.userid}}
+				</td>
+				<td style="text-align:center">
+					{% if dto.qnascore == -1 %}
+						&nbsp;&nbsp;&nbsp;
+					{% else %}
+						{{dto.qnascore}}
+					{% endif %}
+				</td>
+				<td style="text-align:center">
+					{{dto.qnadate|date:"Y-m-d H:i"}} <!-- db에 시간까지 다 들어있어서 찍을 수 있음 -->
+				</td>
+				<td style="text-align:center">
+					{{dto.qnaip}}
+				</td>
+			</tr>
+			
+		{% endfor %} 
+	{% endif %}
+
+</table>
+<br>
+
+{% if startpage > pageblock %}
+		<a href="list?pagenum={{startpage|sub:pageblock}}">[◀]</a>
+{% endif %}
+{% for page in pages %}
+	{% if pagenum == page %}  <!--현재 보는 페이지와 같으면 -->
+		<b>[{{page}}]</b>
+	{% else %}
+		<a href="list?pagenum={{page}}">[{{page}}]</a>
+	{% endif %}
+{% endfor %}
+{% if endpage < pagecount %}
+	<a href="list?pagenum={{startpage|add:pageblock}}">[▶]</a>
+{% endif %}
+	
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
